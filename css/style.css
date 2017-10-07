@@ -6,7 +6,7 @@ html, body {
 #page-manuals {
   margin: 0;
   /*background: linear-gradient(#eee, #ccc);*/
-  background-image: url('/home/hp/all_projects/animated-circular-layout/wallpaper.jpeg');
+  /*background-image: url('wallpaper.jpeg');*/
   background-repeat:no-repeat; 
   background-size: cover;
   overflow: hidden;

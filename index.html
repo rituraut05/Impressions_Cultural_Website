@@ -30,8 +30,24 @@
 		<link rel="stylesheet" href="css/style.css">
 		<script src="js/index.js"></script>
 
+		<link rel="stylesheet" href="landing_page_css/example.css">
+        <style type="text/css">
+            .landing {
+                background: #222;
+            }
+        </style>
 
 </head>
+<style type="text/css">
+.rotatedDiv {
+    margin-top: 200px;
+    margin-left: 200px;
+    -webkit-transition: -webkit-transform 0s ease-in;
+    -webkit-transform: rotate(1deg); 
+    -moz-transform: rotate(1deg);
+}
+
+</style>
 
 <body>
 	<!-- navigation -->
@@ -55,7 +71,12 @@
 	<!-- /navigation-->
 	<!-- pages stack -->
 	<div class="pages-stack">
-				<div class="page" id="page-manuals">
+				<div class="page" id="page-manuals" style="background-image: url('wallpaper.jpeg');">
+
+<!--<div class="rotatedDiv" onclick="this.style.webkitTransform='rotate(-100deg)'">
+This div will do a spin when clicked!
+</div>-->
+
 			<!--<header class="bp-header cf">
 				<h1 class="bp-header__title">Events</h1>-->
 				<!--<p class="bp-header__desc">Based on Ilya Kostin's Dribbble shot <a href="https://dribbble.com/shots/2286042-Stacked-navigation">Stacked navigation</a></p>
@@ -70,35 +91,37 @@
   <ul>
     <li>
       <input id='1' type='checkbox'>
-      <a href="event.html"><img src="events.png" alt="" height="80px"></a>      
+      <a href="events1.html"><img src="Abhinay.png" alt="" height="80px"></a>      
     </li>
     <li>
       <input id='2' type='checkbox'>
-      <a href="event.html"><img src="events.png" alt="" height="80px"></a>
+	  <!--<div class="rotate">-->
+      <a href="events1.html"><img  src="camera.png" alt="" height="80px"></a>
+	  <!--</div>-->
     </li>
     <li>
       <input id='3' type='checkbox'>
-      <a href="event.html"><img src="events.png" alt="" height="80px"></a>      
+      <a href="events1.html"><img src="events.png" alt="" height="80px"></a>      
     </li>
     <li>
       <input id='4' type='checkbox'>
-      <a href="event.html"><img src="events.png" alt="" height="80px"></a>      
+      <a href="events1.html"><img src="events.png" alt="" height="80px"></a>      
     </li>
     <li>
       <input id='5' type='checkbox'>
-      <a href="event.html"><img src="events.png" alt="" height="80px"></a>      
+      <a href="events1.html"><img src="events.png" alt="" height="80px"></a>      
     </li>
     <!--<li>
       <input id='6' type='checkbox'>
-      <a href="event.html"><img src="events.png" alt="" height="80px"></a>      
+      <a href="events1.html"><img src="events.png" alt="" height="80px"></a>      
     </li>
     <li>
       <input id='7' type='checkbox'>
-      <a href="event.html"><img src="events.png" alt="" height="80px"></a>      
+      <a href="events1.html"><img src="events.png" alt="" height="80px"></a>      
     </li>
     <li>
       <input id='8' type='checkbox'>
-      <a href="event.html"><img src="events.png" alt="" height="80px"></a>      
+      <a href="events1.html"><img src="events.png" alt="" height="80px"></a>      
     </li>-->
   </ul>
   <button><img src="/home/hp/all_projects/COEP Impressions_files/Foot.png" alt="" style="position: relative" height="350px"></button>
@@ -113,20 +136,169 @@
 		</div>
 
 		<!-- page -->
-		<div class="page" id="page-home">
+		<div class="page landing" id="page-home" style="background-image: url('img/landing_page.png'); background-size: cover;">
 			<!-- Blueprint header -->
-			<header class="bp-header cf">
+			<!--<header class="bp-header cf">
 				<span class="bp-header__present">Blueprint <span class="bp-tooltip bp-icon bp-icon--about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
 				<h1 class="bp-header__title">Page Stack Navigation</h1>
 				<p class="bp-header__desc">Based on Ilya Kostin's Dribbble shot <a href="https://dribbble.com/shots/2286042-Stacked-navigation">Stacked navigation</a></p>
 				<nav class="bp-nav">
 					<a class="bp-nav__item bp-icon bp-icon--prev" href="http://tympanus.net/Blueprints/ZoomSlider/" data-info="previous Blueprint"><span>Previous Blueprint</span></a>
-					<!--a class="bp-nav__item bp-icon bp-icon--next" href="" data-info="next Blueprint"><span>Next Blueprint</span></a-->
 					<a class="bp-nav__item bp-icon bp-icon--drop" href="http://tympanus.net/codrops/?p=25311" data-info="back to the Codrops article"><span>back to the Codrops article</span></a>
 					<a class="bp-nav__item bp-icon bp-icon--archive" href="http://tympanus.net/codrops/category/blueprints/" data-info="Blueprints archive"><span>Go to the archive</span></a>
 				</nav>
-			</header>
-			<img class="poster" src="images/1.jpg" alt="img01" />
+			</header>-->
+
+        <div id="container"></div>
+        <script src="landing_page_js/sketch.js"></script>
+        <script>
+        
+        // ----------------------------------------
+        // Particle
+        // ----------------------------------------
+
+        function Particle( x, y, radius ) {
+            this.init( x, y, radius );
+        }
+
+        Particle.prototype = {
+
+            init: function( x, y, radius ) {
+
+                this.alive = true;
+
+                this.radius = radius || 10;
+                this.wander = 0.15;
+                this.theta = random( TWO_PI );
+                this.drag = 0.92;
+                this.color = '#fff';
+
+                this.x = x || 0.0;
+                this.y = y || 0.0;
+
+                this.vx = 0.0;
+                this.vy = 0.0;
+            },
+
+            move: function() {
+
+                this.x += this.vx;
+                this.y += this.vy;
+
+                this.vx *= this.drag;
+                this.vy *= this.drag;
+
+                this.theta += random( -0.5, 0.5 ) * this.wander;
+                this.vx += sin( this.theta ) * 0.1;
+                this.vy += cos( this.theta ) * 0.1;
+
+                this.radius *= 0.96;
+                this.alive = this.radius > 0.5;
+            },
+
+            draw: function( ctx ) {
+
+                ctx.beginPath();
+                ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        };
+
+        // ----------------------------------------
+        // Example
+        // ----------------------------------------
+
+        var MAX_PARTICLES = 280;
+        var COLOURS = [ '#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900', '#FF4E50', '#F9D423' ];
+
+        var particles = [];
+        var pool = [];
+
+        var demo = Sketch.create({
+            container: document.getElementById( 'container' ),
+            retina: 'auto'
+        });
+
+        demo.setup = function() {
+
+            // Set off some initial particles.
+            var i, x, y;
+
+            for ( i = 0; i < 20; i++ ) {
+                x = ( demo.width * 0.5 ) + random( -100, 100 );
+                y = ( demo.height * 0.5 ) + random( -100, 100 );
+                demo.spawn( x, y );
+            }
+        };
+
+        demo.spawn = function( x, y ) {
+            
+            var particle, theta, force;
+
+            if ( particles.length >= MAX_PARTICLES )
+                pool.push( particles.shift() );
+
+            particle = pool.length ? pool.pop() : new Particle();
+            particle.init( x, y, random( 5, 40 ) );
+
+            particle.wander = random( 0.5, 2.0 );
+            particle.color = random( COLOURS );
+            particle.drag = random( 0.9, 0.99 );
+
+            theta = random( TWO_PI );
+            force = random( 2, 8 );
+
+            particle.vx = sin( theta ) * force;
+            particle.vy = cos( theta ) * force;
+
+            particles.push( particle );
+        };
+
+        demo.update = function() {
+
+            var i, particle;
+
+            for ( i = particles.length - 1; i >= 0; i-- ) {
+
+                particle = particles[i];
+
+                if ( particle.alive ) particle.move();
+                else pool.push( particles.splice( i, 1 )[0] );
+            }
+        };
+
+        demo.draw = function() {
+
+            demo.globalCompositeOperation  = 'lighter';
+
+            for ( var i = particles.length - 1; i >= 0; i-- ) {
+                particles[i].draw( demo );
+            }
+        };
+
+        demo.mousemove = function() {
+
+            var particle, theta, force, touch, max, i, j, n;
+
+            for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+
+                touch = demo.touches[i], max = random( 1, 4 );
+                for ( j = 0; j < max; j++ ) {
+                  demo.spawn( touch.x, touch.y );
+                }
+
+            }
+        };
+        
+        </script>
+
+			<!--<img class="poster" src="images/1.jpg" alt="img01" />-->
+			<button id="component-2" class="button button--2" style="filter: url('#filter-goo-2'); position: fixed; bottom: 100px; left: 20px;">
+						<a href='morefiles/register2.php' style="color: white;">REGISTER</a>
+						<span class="button__bg"></span>
+					</button>
+			
 		</div>
 		<!-- /page -->
 		<div class="page" id="page-docu">
