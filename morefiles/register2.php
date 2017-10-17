@@ -93,7 +93,7 @@
 						</li>-->
 					</ol><!-- /fs-fields -->
 					<button class="fs-submit" type="submit">Submit</button>
-				</form><!-- /fs-form -->
+					<a href='../index.html' ><img style="position: fixed; top: 70px; left: 20px; "height="60px" width="60px" src="../img/back.svg"/></a>				</form><!-- /fs-form -->
 			</div><!-- /fs-form-wrap -->
 
 			<!-- Related demos -->
