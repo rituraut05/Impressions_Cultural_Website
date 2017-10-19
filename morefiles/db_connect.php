@@ -8,12 +8,10 @@ if(!$connection)
 {
 	echo "Failed to connect to database.\n";
 }
-$db = mysqli_select_db($connection, 'impressions');
+$db = mysqli_select_db($connection, 'u998011828_imp');
 
 if(!$db)
 {
 	echo "Failed to select database";
 }
-
-
 ?>
