@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/nav_demo.css" />
 	<link rel="stylesheet" type="text/css" href="css/nav_component.css" />
+	<link rel="stylesheet" type="text/css" href="css/sponsors.css" />
 	<script src="js/nav_modernizr-custom.js"></script>
 
 	<!--Events dependencies-->
@@ -91,23 +92,23 @@ This div will do a spin when clicked!
   <ul>
     <li>
       <input id='1' type='checkbox'>
-      <label for='1'><a href="events1.html"><img src="img/events/Abhinay.png" alt=""></a></label>
+      <label for='1'><a href="events1.html"><img src="img/modules/Nrutya.jpg" alt="" ></a></label>
     </li>
     <li>
       <input id='2' type='checkbox'>
-      <label for='2'><a href="events1.html"><img src="img/events/Abhinay.png" alt=""></a></label>
+      <label for='2'><a href="events1.html"><img src="img/modules/Nrutya.jpg" alt=""></a></label>
     </li>
     <li>
       <input id='3' type='checkbox'>
-      <label for='3'><a href="events1.html"><img src="img/events/Abhinay.png" alt="" height="80px"></a></label>
+      <label for='3'><a href="events1.html"><img src="img/modules/Nrutya.jpg" alt="" height="80px"></a></label>
     </li>
     <li>
       <input id='4' type='checkbox'>
-      <label for='4'><a href="events1.html"><img src="img/events/Abhinay.png" alt="" height="80px"></a></label>
+      <label for='4'><a href="events1.html"><img src="img/modules/Nrutya.jpg" alt="" height="80px"></a></label>
     </li>
     <li>
       <input id='5' type='checkbox'>
-      <label for='5'><a href="events1.html"><img src="img/events/Abhinay.png" alt="" height="80px"></a></label>
+      <label for='5'><a href="events1.html"><img src="img/modules/Nrutya.jpg" alt="" height="80px"></a></label>
     </li>
     <!--<li>
       <input id='6' type='checkbox'>
@@ -135,22 +136,163 @@ This div will do a spin when clicked!
 		</div>
 
 		<!-- page -->
-		<div class="page landing" id="page-home" style="background-image: url('img/landing_page.png'); background-size: cover;">
-			<!-- Blueprint header -->
-			<!--<header class="bp-header cf">
-				<span class="bp-header__present">Blueprint <span class="bp-tooltip bp-icon bp-icon--about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
-				<h1 class="bp-header__title">Page Stack Navigation</h1>
-				<p class="bp-header__desc">Based on Ilya Kostin's Dribbble shot <a href="https://dribbble.com/shots/2286042-Stacked-navigation">Stacked navigation</a></p>
-				<nav class="bp-nav">
-					<a class="bp-nav__item bp-icon bp-icon--prev" href="http://tympanus.net/Blueprints/ZoomSlider/" data-info="previous Blueprint"><span>Previous Blueprint</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--drop" href="http://tympanus.net/codrops/?p=25311" data-info="back to the Codrops article"><span>back to the Codrops article</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--archive" href="http://tympanus.net/codrops/category/blueprints/" data-info="Blueprints archive"><span>Go to the archive</span></a>
-				</nav>
-			</header>-->
-
+	<div class="page landing" id="page-home">
+        <div>
+			<img id="image1" style="position: absolute; height:100%; width:100% " src="photo1.png" alt="..." />
+			<canvas style="position: relative" id="canvas1"></canvas>
+			<img id="image2" style="position: absolute; height :100%; width:100%; top: 6px; left: 7px;" src="photo2.png" alt="..." />
+			<img id="image3" style="position: absolute; height :100%; width:80%; top: -10px; left: 130px;" src="one plus.png" alt="..." />
+        </div>
         <div id="container"></div>
-        <script src="landing_page_js/sketch.js"></script>
-        <script>
+		<script src="landing_page_js/sketch.js"></script>
+    </div>
+	<!--<script src="landing_page_js/sketch.js"></script>-->
+	<style>
+		#canvas1{
+		width: 100vw; height: 100vh; position: relative;
+	}
+	</style>
+
+
+<script>
+	console.log('homeeee')
+    var circles = [],
+        canvas = document.getElementById("canvas1"),
+        context = canvas.getContext("2d"),
+        
+        // SETTINGS 
+        opacity = 0.6,                                      // the opacity of the circles 0 to 1
+        colors = ['rgba(34, 49, 63,' + opacity + ')',       // an array of rgb colors for the circles
+                'rgba(189, 195, 199,' + opacity + ')',
+                'rgba(241, 196, 15,' + opacity + ')',
+                'rgba(231, 76, 60,' + opacity + ')',
+                'rgba(231, 76, 60,' + opacity + ')'
+                ],
+        minSize = 1,                                        // the minimum size of the circles in px
+        maxSize = 2,                                       // the maximum size of the circles in px
+        numCircles = 300,                                   // the number of circles
+        minSpeed = -7,                                     // the minimum speed, recommended: -maxspeed
+        maxSpeed = 7,                                    // the maximum speed of the circles
+        expandState = true;                                      // the direction of expansion
+		console.log(canvas)
+    function buildArray() {
+        'use strict';
+        console.log('in home page floating dots js')
+        for (var i =0; i < numCircles ; i++){
+            var color = Math.floor(Math.random() * (colors.length - 1 + 1)) + 1,
+                left = Math.floor(Math.random() * (canvas.width - 0 + 1)) + 0,
+                top = Math.floor(Math.random() * (canvas.height - 0 + 1)) + 0,
+                size = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize,
+                leftSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
+                topSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
+                expandState = expandState;
+            
+                while(leftSpeed == 0 || topSpeed == 0){
+                    leftSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
+                    topSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10;
+                }
+            var circle = {color:color, left:left, top:top, size:size, leftSpeed:leftSpeed, topSpeed:topSpeed, expandState:expandState };
+            circles.push(circle);
+        }
+    }
+
+    function build(){
+        'use strict';
+        
+        for(var h = 0; h < circles.length; h++){
+            var curCircle = circles[h];
+            context.fillStyle = colors[curCircle.color-1];
+            context.beginPath();
+            if(curCircle.left > canvas.width+curCircle.size){
+                curCircle.left = 0-curCircle.size;
+                context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
+            }else if(curCircle.left < 0-curCircle.size){
+                curCircle.left = canvas.width+curCircle.size;
+                context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
+            }else{
+                curCircle.left = curCircle.left+curCircle.leftSpeed;
+                context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false); 
+            }
+            
+            if(curCircle.top > canvas.height+curCircle.size){
+                curCircle.top = 0-curCircle.size;
+                context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
+
+            }else if(curCircle.top < 0-curCircle.size){
+                curCircle.top = canvas.height+curCircle.size;
+                context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
+            }else{
+                curCircle.top = curCircle.top+curCircle.topSpeed;
+                if(curCircle.size != maxSize && curCircle.size != minSize && curCircle.expandState == false){
+                curCircle.size = curCircle.size-0.1;
+                }
+                else if(curCircle.size != maxSize && curCircle.size != minSize && curCircle.expandState == true){
+                curCircle.size = curCircle.size+0.1;
+                }
+                else if(curCircle.size == maxSize && curCircle.expandState == true){
+                curCircle.expandState = false;
+                curCircle.size = curCircle.size-0.1;
+                }
+                else if(curCircle.size == minSize && curCircle.expandState == false){
+                curCircle.expandState = true;
+                curCircle.size = curCircle.size+0.1;
+                }
+                context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false); 
+            }
+            
+            context.closePath();
+            context.fill();
+            context.ellipse;
+        }
+    }
+
+
+    var xVal = 0;
+
+    window.requestAnimFrame = (function (callback) {
+        'use strict';
+        return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function (callback) {
+            window.setTimeout(callback, 1000/60);
+        };
+    })();
+
+    function animate() {
+        'use strict';
+        var canvas = document.getElementById("canvas1"),
+            context = canvas.getContext("2d");
+
+        // clear the canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+
+        // draw the next frame
+        xVal++;
+        build();
+
+        //console.log("Prep: animate ==> requestAnimFrame");
+        // request a new frame
+        requestAnimFrame(function () {
+            animate();
+        });
+    }
+    window.onload = function () {
+        'use strict';
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        buildArray();
+        animate();
+    };
+
+
+
+</script>
+
+ <script>
         
         // ----------------------------------------
         // Particle
@@ -163,9 +305,6 @@ This div will do a spin when clicked!
         Particle.prototype = {
 
             init: function( x, y, radius ) {
-
-                this.alive = true;
-
                 this.radius = radius || 10;
                 this.wander = 0.15;
                 this.theta = random( TWO_PI );
@@ -177,6 +316,7 @@ This div will do a spin when clicked!
 
                 this.vx = 0.0;
                 this.vy = 0.0;
+			    this.alive = true;
             },
 
             move: function() {
@@ -184,15 +324,16 @@ This div will do a spin when clicked!
                 this.x += this.vx;
                 this.y += this.vy;
 
-                this.vx *= this.drag;
-                this.vy *= this.drag;
+                this.vx *= this.drag/1.25;
+                this.vy *= this.drag/1.25;
 
                 this.theta += random( -0.5, 0.5 ) * this.wander;
                 this.vx += sin( this.theta ) * 0.1;
                 this.vy += cos( this.theta ) * 0.1;
 
-                this.radius *= 0.96;
-                this.alive = this.radius > 0.5;
+                this.radius *= 0.95;
+				if(this.radius < 0.1)
+					this.alive = false;
             },
 
             draw: function( ctx ) {
@@ -208,15 +349,15 @@ This div will do a spin when clicked!
         // Example
         // ----------------------------------------
 
-        var MAX_PARTICLES = 280;
-        var COLOURS = [ '#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900', '#FF4E50', '#F9D423' ];
+        var MAX_PARTICLES = 560;
+						// RED x 4, PINK, PURPLE, CYAN , DARKBLUE , MED-BLUE, BLACK, GREEN-BLUE , dark blue
+        var COLOURS = [ '#F61B4F' , '#FC001D', '#FD001A' , '#FC0034 ', '#FC0079' , '#9D00BB' , '#2BF5F8' , '#010104' , '#04D2BE' , '#1215C0' ];
 
         var particles = [];
         var pool = [];
 
         var demo = Sketch.create({
-            container: document.getElementById( 'container' ),
-            retina: 'auto'
+            container: document.getElementById( 'container' )
         });
 
         demo.setup = function() {
@@ -239,7 +380,7 @@ This div will do a spin when clicked!
                 pool.push( particles.shift() );
 
             particle = pool.length ? pool.pop() : new Particle();
-            particle.init( x, y, random( 5, 40 ) );
+            particle.init( x, y, 3 );
 
             particle.wander = random( 0.5, 2.0 );
             particle.color = random( COLOURS );
@@ -278,27 +419,21 @@ This div will do a spin when clicked!
 
         demo.mousemove = function() {
 
-            var particle, theta, force, touch, max, i, j, n;
+            var touch, max, i, j, n;
 
             for ( i = 0, n = demo.touches.length; i < n; i++ ) {
 
                 touch = demo.touches[i], max = random( 1, 4 );
                 for ( j = 0; j < max; j++ ) {
-                  demo.spawn( touch.x, touch.y );
+                  demo.spawn( random(touch.x + 45, touch.x - 45), random(touch.y + 45 , touch.y - 45) );
                 }
 
             }
         };
         
-        </script>
+</script>
 
-			<!--<img class="poster" src="images/1.jpg" alt="img01" />-->
-			<button id="component-2" class="button button--2" style="filter: url('#filter-goo-2'); position: fixed; bottom: 100px; left: 20px;">
-						<a href='morefiles/register2.php' style="color: white;">REGISTER</a>
-						<span class="button__bg"></span>
-					</button>
-			
-		</div>
+
 		<!-- /page -->
 		<div class="page" id="page-docu">
 			<header class="bp-header cf">
@@ -310,16 +445,180 @@ This div will do a spin when clicked!
 			</header>
 			<img class="poster" src="images/6.jpg" alt="img06" />
 		</div>
+
+		<!--page Sponsors-->
 		<div class="page" id="page-software">
-			<header class="bp-header cf">
-				<h1 class="bp-header__title">Sponsors</h1>
-				<p class="bp-header__desc">Based on Ilya Kostin's Dribbble shot <a href="https://dribbble.com/shots/2286042-Stacked-navigation">Stacked navigation</a></p>
-				<p class="info">
-					"I decided to pick the diet that I thought would maximize my chances of long-term survival." &mdash; Al Gore
-				</p>
-			</header>
-			<img class="poster" src="images/3.jpg" alt="img03" />
+			<div class="hameid-loader-overlay"></div>
+			<br><br><br>
+			<div>    
+				<p><h1 style="color:white" text-align="center"; >Sponsors</h1></p>
+				<p><h2 > Title Sponsor </h2></p>
+				<img  src="img/sponsors/ops.jpg" alt="..." /> <br>
+				<canvas style="position: relative" id="canvas2"></canvas>
+				<h2 style="position: absolute; text-align:center; color:grey"> Rest Coming Soon </h2>
+			</div>
 		</div>
+<script src="http://code.jquery.com/jquery-1.4.4.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    fadeloop(image4, 3000, 3000,true);
+    });
+    function fadeloop(el,timeout,timein,loop){
+        var $el = $(el),intId,fn = function(){
+            $el.fadeOut(timeout).fadeIn(timein);
+        };
+        fn();
+        if(loop){
+            intId = setInterval(fn,timeout+timein+100);
+            return intId;
+        }
+        return false;
+    }
+</script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<script>
+    jQuery(window).load(function(){
+        jQuery(".hameid-loader-overlay").fadeOut(500);
+    });
+</script>
+
+<script>
+	console.log('heyyyyy')
+        var circles = [],
+            canvas = document.getElementById("canvas2"),
+            context = canvas.getContext("2d"),
+            
+            // SETTINGS 
+            opacity = 0.6,                                      // the opacity of the circles 0 to 1
+            colors = ['rgba(34, 49, 63,' + opacity + ')',       // an array of rgb colors for the circles
+                    'rgba(189, 195, 199,' + opacity + ')',
+                    'rgba(241, 196, 15,' + opacity + ')',
+                    'rgba(231, 76, 60,' + opacity + ')',
+                    'rgba(231, 76, 60,' + opacity + ')'
+                    ],
+            minSize = 1,                                        // the minimum size of the circles in px
+            maxSize = 2,                                       // the maximum size of the circles in px
+            numCircles = 300,                                   // the number of circles
+            minSpeed = -7,                                     // the minimum speed, recommended: -maxspeed
+            maxSpeed = 7,                                    // the maximum speed of the circles
+            expandState = true;                                      // the direction of expansion
+console.log(canvas)
+        function buildArray() {
+            'use strict';
+            console.log('in sponsors floating dots js')
+            for (var i =0; i < numCircles ; i++){
+                var color = Math.floor(Math.random() * (colors.length - 1 + 1)) + 1,
+                    left = Math.floor(Math.random() * (canvas.width - 0 + 1)) + 0,
+                    top = Math.floor(Math.random() * (canvas.height - 0 + 1)) + 0,
+                    size = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize,
+                    leftSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
+                    topSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
+                    expandState = expandState;
+                
+                    while(leftSpeed == 0 || topSpeed == 0){
+                        leftSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
+                        topSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10;
+                    }
+                var circle = {color:color, left:left, top:top, size:size, leftSpeed:leftSpeed, topSpeed:topSpeed, expandState:expandState };
+                circles.push(circle);
+            }
+        }
+
+        function build(){
+            'use strict';
+            
+            for(var h = 0; h < circles.length; h++){
+                var curCircle = circles[h];
+                context.fillStyle = colors[curCircle.color-1];
+                context.beginPath();
+                if(curCircle.left > canvas.width+curCircle.size){
+                    curCircle.left = 0-curCircle.size;
+                    context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
+                }else if(curCircle.left < 0-curCircle.size){
+                    curCircle.left = canvas.width+curCircle.size;
+                    context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
+                }else{
+                    curCircle.left = curCircle.left+curCircle.leftSpeed;
+                    context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false); 
+                }
+                
+                if(curCircle.top > canvas.height+curCircle.size){
+                    curCircle.top = 0-curCircle.size;
+                    context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
+
+                }else if(curCircle.top < 0-curCircle.size){
+                    curCircle.top = canvas.height+curCircle.size;
+                    context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
+                }else{
+                    curCircle.top = curCircle.top+curCircle.topSpeed;
+                    if(curCircle.size != maxSize && curCircle.size != minSize && curCircle.expandState == false){
+                    curCircle.size = curCircle.size-0.1;
+                    }
+                    else if(curCircle.size != maxSize && curCircle.size != minSize && curCircle.expandState == true){
+                    curCircle.size = curCircle.size+0.1;
+                    }
+                    else if(curCircle.size == maxSize && curCircle.expandState == true){
+                    curCircle.expandState = false;
+                    curCircle.size = curCircle.size-0.1;
+                    }
+                    else if(curCircle.size == minSize && curCircle.expandState == false){
+                    curCircle.expandState = true;
+                    curCircle.size = curCircle.size+0.1;
+                    }
+                    context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false); 
+                }
+                
+                context.closePath();
+                context.fill();
+                context.ellipse;
+            }
+        }
+
+
+        var xVal = 0;
+
+        window.requestAnimFrame = (function (callback) {
+            'use strict';
+            return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000/60);
+            };
+        })();
+
+        function animate() {
+            'use strict';
+            var canvas = document.getElementById("canvas2"),
+                context = canvas.getContext("2d");
+
+            // clear the canvas
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+
+            // draw the next frame
+            xVal++;
+            build();
+
+            //console.log("Prep: animate ==> requestAnimFrame");
+            // request a new frame
+            requestAnimFrame(function () {
+                animate();
+            });
+        }
+        window.onload = function () {
+            'use strict';
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            buildArray();
+            animate();
+        };
+</script>
+		<!--/page Sponsors-->
+
 		<div class="page" id="page-custom">
 			<header class="bp-header cf">
 				<h1 class="bp-header__title">Team</h1>
