@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<button id="component-2" class="button button--2" style="filter: url('#filter-goo-2'); position: fixed; bottom: 100px; left: 20px;">
+			<button id="component-2" class="button button--2" style="position: fixed; bottom: 100px; left: 20px;">
 				<a href='../index.html' >BACK</a>
 				<span class="button__bg"></span>
 			</button>

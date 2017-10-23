@@ -23,14 +23,39 @@ if(mysqli_num_rows($result)==1)
 	echo'<script type="text/javascript">',
         'alert("Username already taken. Try another one");',
         '</script>';
-	header( "refresh:0.5;url=register.php" );
+	header( "refresh:0.5;url=register2.php" );
 	die();
 }
+// else {
+// 	echo'new username'
+// }
+else{
+
+	echo'<script type="text/javascript">',
+
+        'alert("this username does not exist");',
+
+        '</script>';
+
+}
+
+
+// $query = "SELECT * FROM user_details WHERE email='$email'";
+// $result = mysqli_query($connection, $query);
+
+// if(mysqli_num_rows($result)==1)
+// {
+// 	echo'<script type="text/javascript">',
+//         'alert("Email address already registered");',
+//         '</script>';
+// 	header( "refresh:0.5;url=register2.php" );
+// 	die();
+// }
 // else{
 
 // 	echo'<script type="text/javascript">',
 
-//         'console.log("this username does not exist");',
+//         'alert("New Email address");',
 
 //         '</script>';
 
@@ -69,7 +94,7 @@ else
 	echo'<script type="text/javascript">',
 		'alert("Email address already registered");',
 		'</script>';
-    header( "refresh:0.5;url=register.php" );
+    header( "refresh:0.5;url=register2.php" );
 }
 }
 ob_end_flush();	
