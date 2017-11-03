@@ -185,12 +185,19 @@
 }
 
 .slideshow nav span.nav-close {
-	top: 0;
+	top: 0px;
 	right: 0;
 	padding: 0.5em 1em;
 	color: #31373a;
 }
-
+@media only screen and (max-width : 768px) {
+		.slideshow nav span.nav-close	{
+			top: 50px;
+			right: 0;
+			padding: 0.5em 1em;
+			color: #31373a;
+		}
+	}
 .icon:before,
 .icon:after {
 	font-family: 'fontawesome';
@@ -205,15 +212,17 @@
 }
 
 span.nav-prev:before {
-	content: "\e601";
+	color: #909090;
+	content: "\01F82C";
 }
 
 span.nav-next:before  {
-	content: "\e600";
+	color: #909090;
+	content: "\01F82E";
 }
 
 span.nav-close:before {
-	content: "\e602";
+	content: url(xbutton.png);
 }
 
 /* Info on arrow key navigation */
@@ -276,6 +285,7 @@ span.nav-close:before {
 
 	.slideshow nav span,
 	.slideshow nav span.nav-close {
+		top:50px;
 		font-size: 1.8em;
 		padding: 0.3em;
 	}

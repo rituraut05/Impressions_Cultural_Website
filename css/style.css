@@ -11,8 +11,19 @@ html, body {
 #page-manuals {
   margin: 0;
   /*background: linear-gradient(#eee, #ccc);*/
-  /*background-image: url('wallpaper.jpeg');*/
-  background-color:#fffed8; 
+  background-image: url('../background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*background-color:#fffed8; */
+  overflow: hidden;
+}
+#page-docu, #page-software, #page-training {
+  margin: 0;
+  /*background: linear-gradient(#eee, #ccc);*/
+  background-image: url('../background2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*background-color:#fffed8; */
   overflow: hidden;
 }
 
